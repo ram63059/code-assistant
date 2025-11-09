@@ -57,14 +57,14 @@ router.post(
         return res.status(400).json({ error: 'Session ID is required' });
       }
 
-      // Ensure session exists
-      await supabaseService.ensureSession(sessionId);
-
-      // Setup SSE
+      // Setup SSE headers early to ensure proper error handling
       res.setHeader('Content-Type', 'text/event-stream');
       res.setHeader('Cache-Control', 'no-cache');
       res.setHeader('Connection', 'keep-alive');
       res.flushHeaders();
+
+      // Ensure session exists
+      await supabaseService.ensureSession(sessionId);
 
       // Send processing status
       res.write(`data: ${JSON.stringify({ 

@@ -7,8 +7,8 @@ export class GeminiService {
 
   constructor(apiKey: string) {
     this.genAI = new GoogleGenerativeAI(apiKey);
-    this.model = this.genAI.getGenerativeModel({ 
-      model: 'gemini-1.5-pro',
+    this.model = this.genAI.getGenerativeModel({
+      model: 'gemini-2.0-flash',
       generationConfig: {
         temperature: 0.7,
         topP: 0.95,
@@ -36,12 +36,6 @@ export class GeminiService {
 
       const chat = this.model.startChat({
         history: history,
-        generationConfig: {
-          temperature: 0.7,
-          topP: 0.95,
-          topK: 40,
-          maxOutputTokens: 8192,
-        },
       });
 
       const result = await chat.sendMessageStream(contextPrompt);
