@@ -1,6 +1,7 @@
 import { supabase, STORAGE_BUCKET } from '../config/supabase';
 import { UploadedFile, Session, Conversation } from '../types';
 import { v4 as uuidv4 } from 'uuid';
+import { Express } from "express";
 
 export class SupabaseService {
   /**

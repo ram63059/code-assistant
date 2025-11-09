@@ -1,5 +1,6 @@
 import { SupabaseService } from './supabaseService';
 import { FileContent } from '../types';
+import { Express } from "express";
 
 export class FileService {
   private supabaseService: SupabaseService;
