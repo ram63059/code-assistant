@@ -1,8 +1,8 @@
 import  { useState } from 'react';
 import ChatInterface from './components/ChatInterface';
 import { Code2, Sparkles } from 'lucide-react';
-import ApiKeyInput from './components/ApikeyInput';
 import './App.css';
+import ApiKeyInput from './components/ApiKeyInput';
 
 function App() {
   const [apiKey, setApiKey] = useState<string>('');
@@ -31,9 +31,7 @@ function App() {
                 AI Code Assistant
                 <Sparkles className="w-8 h-8 text-yellow-300" />
               </h1>
-              <p className="text-purple-100 text-lg">
-                Upload your codebase and get intelligent assistance powered by Gemini AI
-              </p>
+              
             </div>
 
             {/* API Key Input */}
@@ -45,7 +43,7 @@ function App() {
               <ul className="space-y-2 text-sm text-purple-100">
                 <li className="flex items-start gap-2">
                   <span className="text-green-300">✓</span>
-                  <span>Upload multiple code files to Supabase</span>
+                  <span>Upload multiple code files </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green-300">✓</span>
@@ -59,10 +57,7 @@ function App() {
                   <span className="text-green-300">✓</span>
                   <span>Syntax highlighting and code analysis</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-green-300">✓</span>
-                  <span>Conversation history saved to database</span>
-                </li>
+               
               </ul>
             </div>
           </div>

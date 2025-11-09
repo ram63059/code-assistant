@@ -1,42 +1,138 @@
-#root {
-  max-width: 1280px;
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.chat-container {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Fixed chat layout */
+.chat-header {
+  flex-shrink: 0;
 }
 
-@keyframes logo-spin {
+.chat-messages {
+  flex: 1;
+  min-height: 0;
+}
+
+.chat-input-container {
+  flex-shrink: 0;
+  background: white;
+  z-index: 10;
+}
+
+/* Smooth message animations */
+.message-bubble {
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(8px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Typing indicator */
+.typing-indicator {
+  display: inline-flex;
+  gap: 4px;
+  padding: 10px;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background: #666;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
   }
 }
 
-.card {
-  padding: 2em;
+/* Code block styling */
+.code-block {
+  position: relative;
+  margin: 1rem 0;
 }
 
-.read-the-docs {
-  color: #888;
+.copy-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+
+.code-block:hover .copy-button {
+  opacity: 1;
+}
+
+/* File attachment animations */
+.file-pill-enter {
+  animation: filePillEnter 0.2s ease-out;
+}
+
+@keyframes filePillEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Prevent layout shift during streaming */
+.message-content {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
 }
