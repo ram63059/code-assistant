@@ -1,8 +1,7 @@
 import { getSessionId } from './supabase';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL
-  ? `${import.meta.env.VITE_API_URL}/api`
-  : '/api';
+const backendUrl = import.meta.env.VITE_API_URL?.replace(/\/$/, ''); // remove trailing slash
+const API_BASE_URL = backendUrl ? `${backendUrl}/api` : '/api';
 export interface SendMessageParams {
   message: string;
   apiKey: string;
